@@ -1,12 +1,24 @@
-
 import { GoogleGenAI } from "@google/genai";
 import { CLINIC_INFO } from "../constants";
 
-// Use the API key directly from process.env.API_KEY as per guidelines
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Função para obter a IA com segurança
+const getAIClient = () => {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    console.warn("API_KEY não encontrada nas variáveis de ambiente.");
+    return null;
+  }
+  return new GoogleGenAI({ apiKey });
+};
 
 export const getPodologyResponse = async (userPrompt: string) => {
   try {
+    const ai = getAIClient();
+    
+    if (!ai) {
+      return "O assistente está em manutenção. Por favor, chame no WhatsApp: " + CLINIC_INFO.phone;
+    }
+
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: userPrompt,
@@ -27,10 +39,9 @@ export const getPodologyResponse = async (userPrompt: string) => {
       },
     });
 
-    // Accessing the .text property directly instead of calling it as a method
     return response.text;
   } catch (error) {
     console.error("Error calling Gemini API:", error);
-    return "Desculpe, tive um problema técnico. Por favor, entre em contato direto pelo nosso WhatsApp: " + CLINIC_INFO.phone;
+    return "Olá! Tive um probleminha para processar sua dúvida agora. Que tal conversarmos diretamente pelo WhatsApp? " + CLINIC_INFO.phone;
   }
 };
