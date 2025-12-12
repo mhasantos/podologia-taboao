@@ -28,7 +28,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]">
+    <div className="min-h-screen flex flex-col opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
       <Navbar />
       <main className="flex-grow">
         <Hero />
@@ -42,7 +42,7 @@ const App: React.FC = () => {
       
       <style>{`
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
+          from { opacity: 0; transform: translateY(5px); }
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
