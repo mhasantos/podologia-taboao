@@ -1,0 +1,7 @@
+{
+  "name": "Podologia Pirajussara",
+  "description": "Site profissional para a Clínica Especializada Podologia Pirajussara em Taboão da Serra, apresentando serviços, avaliações e assistente inteligente.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
