@@ -8,6 +8,7 @@ import Location from './components/Location';
 import Footer from './components/Footer';
 import AIChat from './components/AIChat';
 
+// Versão de correção de Deploy: 1.0.2
 const App: React.FC = () => {
   useEffect(() => {
     // Implementação de scroll suave aprimorada
@@ -28,7 +29,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
+    <div className="min-h-screen flex flex-col opacity-0 animate-[fadeIn_0.5s_ease-out_forwards]">
       <Navbar />
       <main className="flex-grow">
         <Hero />
