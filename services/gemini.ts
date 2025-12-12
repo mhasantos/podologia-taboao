@@ -1,9 +1,11 @@
 import { GoogleGenAI } from "@google/genai";
 import { CLINIC_INFO } from "../constants";
 
-// Função para obter a IA com segurança
+// Função para obter a IA com segurança acessando a variável injetada pelo Vite
 const getAIClient = () => {
-  const apiKey = process.env.API_KEY;
+  // @ts-ignore - process.env é injetado pelo Vite via define no vite.config.ts
+  const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : undefined;
+  
   if (!apiKey) {
     console.warn("API_KEY não encontrada nas variáveis de ambiente.");
     return null;
