@@ -11,6 +11,8 @@
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
+        /* Garante que o root ocupe a tela se estiver vazio por erro de JS */
+        #root { min-height: 100vh; }
     </style>
 <script type="importmap">
 {
