@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -10,28 +9,28 @@ import Footer from './components/Footer';
 import AIChat from './components/AIChat';
 
 const App: React.FC = () => {
-  // Smooth scroll implementation
   useEffect(() => {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        if (href) {
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth'
-            });
-          }
+    // Implementação de scroll suave aprimorada
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      if (anchor && anchor.hash && anchor.origin === window.location.origin) {
+        const element = document.querySelector(anchor.hash);
+        if (element) {
+          e.preventDefault();
+          element.scrollIntoView({ behavior: 'smooth' });
         }
-      });
-    });
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]">
       <Navbar />
-      <main>
+      <main className="flex-grow">
         <Hero />
         <Services />
         <Testimonials />
@@ -40,6 +39,13 @@ const App: React.FC = () => {
       </main>
       <Footer />
       <AIChat />
+      
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </div>
   );
 };
