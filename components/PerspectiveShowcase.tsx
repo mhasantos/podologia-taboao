@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CLINIC_INFO } from '../constants';
 import { Layout, Smartphone, MousePointer2 } from 'lucide-react';
@@ -15,8 +14,8 @@ const PerspectiveShowcase: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
-          <div className="lg:w-1/3 text-white z-10">
-            <h2 className="text-teal-400 font-bold tracking-widest text-sm uppercase mb-3 flex items-center gap-2">
+          <div className="lg:w-1/3 text-white z-10 text-center lg:text-left">
+            <h2 className="text-teal-400 font-bold tracking-widest text-sm uppercase mb-3 flex items-center justify-center lg:justify-start gap-2">
               <Layout className="w-4 h-4" /> Design de Última Geração
             </h2>
             <h3 className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">
@@ -26,25 +25,25 @@ const PerspectiveShowcase: React.FC = () => {
               Utilizamos tecnologias de ponta para garantir que seu primeiro contato com a {CLINIC_INFO.name} seja tão cuidadoso quanto nossos tratamentos.
             </p>
             
-            <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row lg:flex-col items-center lg:items-start justify-center gap-4 sm:gap-8 lg:gap-4">
               <div className="flex items-center gap-4 text-teal-100">
-                <div className="w-10 h-10 rounded-full bg-teal-800 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-teal-800 flex items-center justify-center shrink-0">
                   <Smartphone className="w-5 h-5" />
                 </div>
-                <span>Totalmente Responsivo</span>
+                <span className="text-sm sm:text-base">Totalmente Responsivo</span>
               </div>
               <div className="flex items-center gap-4 text-teal-100">
-                <div className="w-10 h-10 rounded-full bg-teal-800 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-teal-800 flex items-center justify-center shrink-0">
                   <MousePointer2 className="w-5 h-5" />
                 </div>
-                <span>Navegação Intuitiva</span>
+                <span className="text-sm sm:text-base">Navegação Intuitiva</span>
               </div>
             </div>
           </div>
 
-          <div className="lg:w-2/3 relative h-[500px] w-full flex items-center justify-center">
-            {/* 3D Container */}
-            <div className="relative w-full max-w-lg transition-all duration-700 hover:scale-105" 
+          <div className="lg:w-2/3 relative h-[400px] sm:h-[500px] w-full flex items-center justify-center mt-8 lg:mt-0">
+            {/* 3D Container com escala responsiva para não vazar da tela */}
+            <div className="relative w-full max-w-sm sm:max-w-lg transition-all duration-700 hover:scale-105 origin-center scale-[0.7] sm:scale-90 lg:scale-100" 
                  style={{ 
                    perspective: '2000px',
                    transformStyle: 'preserve-3d'
@@ -64,7 +63,7 @@ const PerspectiveShowcase: React.FC = () => {
               </div>
 
               {/* Layer 2 (Middle) - Reviews */}
-              <div className="absolute top-10 left-10 w-full bg-white rounded-xl shadow-2xl p-6 border border-gray-100 transition-all duration-500 hover:translate-x-5 hover:-translate-y-5"
+              <div className="absolute top-8 left-8 sm:top-10 sm:left-10 w-full bg-white rounded-xl shadow-2xl p-6 border border-gray-100 transition-all duration-500 hover:translate-x-5 hover:-translate-y-5"
                    style={{
                      transform: 'rotateX(50deg) rotateZ(-30deg) translateZ(0px)',
                    }}>
@@ -82,7 +81,7 @@ const PerspectiveShowcase: React.FC = () => {
               </div>
 
               {/* Layer 1 (Top/Front) - Hero/Title */}
-              <div className="absolute top-20 left-20 w-full bg-teal-600 rounded-xl shadow-[0_50px_100px_rgba(0,0,0,0.3)] p-8 text-white transition-all duration-500 hover:translate-x-0 hover:-translate-y-0"
+              <div className="absolute top-16 left-16 sm:top-20 sm:left-20 w-full bg-teal-600 rounded-xl shadow-[0_50px_100px_rgba(0,0,0,0.3)] p-8 text-white transition-all duration-500 hover:translate-x-0 hover:-translate-y-0"
                    style={{
                      transform: 'rotateX(50deg) rotateZ(-30deg) translateZ(80px)',
                    }}>
@@ -97,7 +96,7 @@ const PerspectiveShowcase: React.FC = () => {
               </div>
 
               {/* Chat Bubble Layer */}
-              <div className="absolute -right-12 bottom-0 w-48 bg-white rounded-2xl shadow-2xl p-4 transition-all duration-500"
+              <div className="absolute -right-4 sm:-right-12 bottom-0 w-40 sm:w-48 bg-white rounded-2xl shadow-2xl p-4 transition-all duration-500"
                    style={{
                      transform: 'rotateX(50deg) rotateZ(-30deg) translateZ(140px)',
                    }}>
